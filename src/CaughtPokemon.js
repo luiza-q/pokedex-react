@@ -1,18 +1,24 @@
 import React, { useState } from "react";
 
 
-const pokemonNames = ['Pikachu', 'Dragonite', 'Bulbasaur', 'Charmander', 'Charmeleon']
+// const pokemonNames = ['Pikachu', 'Dragonite', 'Bulbasaur', 'Charmander', 'Charmeleon']
 
 
 const CaughtPokemon = (props) => {
   const [caught, setCaught] = useState([])  
   
   const catchPokemon = () => {
-  //  setCaught(caught.concat('Pikachu'))
-  let randomPosition = Math.floor(Math.random() * 5)
-  const randomPokemon = pokemonNames[randomPosition]
-  const newCaught = caught.concat(randomPokemon);
-  setCaught(newCaught);
+    setCaught(caught.concat(pokemonNameInput))
+  // let randomPosition = Math.floor(Math.random() * 5)
+  // const randomPokemon = pokemonNames[randomPosition]
+  
+  // const newCaught = caught.concat(pokemonNameInput);
+  //   setCaught(newCaught);
+  }
+
+  const [pokemonNameInput, setPokemonNameInput] = useState('');
+  function handleInputChange (event) {
+      setPokemonNameInput(event.target.value)
   }
 
     return (
@@ -23,6 +29,7 @@ const CaughtPokemon = (props) => {
           <li key={index}>{pokemon}</li>
         ))}
       </ul>
+      <input type="text" value={pokemonNameInput} onChange={handleInputChange} />
       <button onClick={catchPokemon}>Catch a Pokemon!</button>
       </div>
     )
